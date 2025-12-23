@@ -3,25 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sacred Security Solutions</title>
-  <meta name="description" content="Cybersecurity for small businesses: email hardening, vulnerability scans, ransomware prevention." />
+
+  <title>SacredCyber | Cybersecurity Consulting • Oklahoma</title>
+  <meta name="description" content="Cybersecurity for small businesses in Oklahoma. Email hardening (MFA, SPF/DKIM/DMARC), vulnerability assessments, and ransomware readiness." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph (nice previews when you share the link) -->
+  <meta property="og:title" content="SacredCyber | Cybersecurity Consulting" />
+  <meta property="og:description" content="Reduce risk, stop phishing, harden email, and prevent ransomware. Tulsa • Broken Arrow • Coweta." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lukemeehan21.github.io/" />
 
   <style>
     :root { --max: 980px; }
     body { margin:0; font-family: system-ui, Arial, sans-serif; line-height:1.5; color:#111; background:#fff; }
     header { padding: 56px 16px; background: #0b1b2b; color:#fff; }
     .wrap { max-width: var(--max); margin: 0 auto; }
-    h1 { margin:0 0 10px; font-size: 40px; }
+    h1 { margin:0 0 10px; font-size: 40px; letter-spacing: -0.5px; }
     p { margin: 0 0 14px; }
-    .cta { display:inline-block; margin-top: 14px; padding: 12px 16px; background:#3bb273; color:#0b1b2b; border-radius: 10px; text-decoration:none; font-weight: 700; }
+    .cta { display:inline-block; margin-top: 14px; padding: 12px 16px; background:#3bb273; color:#0b1b2b; border-radius: 10px; text-decoration:none; font-weight: 800; }
+    .cta.secondary { background: transparent; color:#fff; border:1px solid rgba(255,255,255,0.35); margin-left:10px; font-weight:700; }
     main { padding: 28px 16px; }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
-    .card { border:1px solid #e7e7e7; border-radius: 14px; padding: 16px; }
-    .tag { display:inline-block; font-size:12px; padding: 4px 8px; border-radius: 999px; background:#eef6ff; border:1px solid #d6e9ff; }
+    .card { border:1px solid #e7e7e7; border-radius: 14px; padding: 16px; background:#fff; }
+    .tag { display:inline-block; font-size:12px; padding: 4px 10px; border-radius: 999px; background:#eef6ff; border:1px solid #d6e9ff; }
     footer { padding: 24px 16px; border-top:1px solid #eee; color:#555; font-size: 14px; }
     .muted { color:#cfe3ff; }
     .small { font-size: 14px; color:#444; }
     a { color: inherit; }
+    ul { padding-left: 18px; margin: 10px 0 0; }
+    li { margin: 6px 0; }
+
+    /* simple form styling */
+    label { display:block; font-weight:600; margin: 10px 0 6px; }
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border:1px solid #dcdcdc;
+      border-radius: 10px;
+      font: inherit;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 12px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 10px;
+      background:#0b1b2b;
+      color:#fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.95; }
   </style>
 </head>
 
@@ -29,60 +62,125 @@
   <header>
     <div class="wrap">
       <div class="tag">Cybersecurity Consulting • Oklahoma</div>
-      <h1>Sacred Security Solutions</h1>
-      <p class="muted">Practical cybersecurity for small businesses: reduce risk, stop phishing, harden email, and prevent ransomware.</p>
+      <h1>SacredCyber</h1>
+
+      <p class="muted" style="max-width:760px;">
+        We help small businesses reduce cyber risk with practical, high-impact security: hardened email,
+        vulnerability assessments, and ransomware readiness—without enterprise overhead.
+      </p>
+
       <a class="cta" href="#contact">Request a Free Risk Review</a>
-      <p class="small muted" style="margin-top:10px;">Email: <a href="mailto:you@domain.com">you@domain.com</a> • Phone: <a href="tel:+19180000000">(918) 000-0000</a></p>
+      <a class="cta secondary" href="#services">View Services</a>
+
+      <p class="small muted" style="margin-top:12px;">
+        Email: <a href="mailto:you@domain.com">you@domain.com</a> •
+        Phone: <a href="tel:+19180000000">(918) 000-0000</a>
+      </p>
+
+      <p class="small muted" style="margin-top:4px;">
+        Tulsa • Broken Arrow • Coweta • Northeast Oklahoma
+      </p>
     </div>
   </header>
 
   <main>
     <div class="wrap">
-      <h2>What we do</h2>
+
+      <h2 id="services">Core services</h2>
       <div class="grid">
         <div class="card">
           <h3>Email Security Hardening</h3>
           <p>MFA, conditional access, anti-phishing, and domain protection (SPF/DKIM/DMARC).</p>
+          <ul>
+            <li>Lock down Microsoft 365 / Google Workspace</li>
+            <li>Stop spoofing and business email compromise</li>
+            <li>Remove risky forwarding + legacy sign-in methods</li>
+          </ul>
         </div>
+
         <div class="card">
           <h3>Vulnerability Assessments</h3>
-          <p>Scan internal/external systems, prioritize risks, and deliver a fix plan that makes sense.</p>
+          <p>Find what’s exposed and fix it in the right order.</p>
+          <ul>
+            <li>Internal + external scanning</li>
+            <li>Prioritized remediation plan</li>
+            <li>Executive summary + technical appendix</li>
+          </ul>
         </div>
+
         <div class="card">
           <h3>Ransomware Readiness</h3>
-          <p>Backup strategy, endpoint protection, policies, and incident response playbooks.</p>
+          <p>Reduce downtime risk with backups, endpoint protection, and response planning.</p>
+          <ul>
+            <li>Backup and recovery validation</li>
+            <li>Endpoint hardening recommendations</li>
+            <li>Incident response checklist + playbook</li>
+          </ul>
         </div>
       </div>
 
-      <h2 style="margin-top:28px;">Why it matters</h2>
+      <h2 style="margin-top:28px;">What you get</h2>
       <div class="grid">
         <div class="card">
-          <h3>Protect client data</h3>
-          <p>Insurance, construction, and small offices hold sensitive identity and financial info.</p>
+          <h3>Plain-English reporting</h3>
+          <p>Clear findings, impact, and “what to do next” so owners can make decisions fast.</p>
         </div>
         <div class="card">
-          <h3>Reduce downtime</h3>
-          <p>A single breach can stop operations for days or weeks—prevention is cheaper.</p>
+          <h3>Compliance-ready documentation</h3>
+          <p>Policies and summaries that support audits, insurance renewals, and vendor questionnaires.</p>
         </div>
         <div class="card">
-          <h3>Simple monthly options</h3>
-          <p>Affordable plans so you don’t need a full-time security employee.</p>
+          <h3>Fast wins in 7–14 days</h3>
+          <p>We focus on high-impact controls first: MFA, email protections, backups, and exposure reduction.</p>
         </div>
       </div>
 
       <h2 id="contact" style="margin-top:28px;">Contact</h2>
-      <div class="card">
-        <p><strong>Email:</strong> <a href="mailto:you@domain.com">you@domain.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+19180000000">(918) 000-0000</a></p>
-        <p><strong>Service area:</strong> Tulsa / Broken Arrow / Coweta and surrounding areas</p>
-        <p class="small">Tip: If you want a contact form on GitHub Pages, we can add a free form service (Formspree) with no backend.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Request a free risk review</h3>
+          <p class="small">Tell us what you’re using (Microsoft 365/Google, number of users). We’ll reply with next steps.</p>
+
+          <!-- Formspree: create a form, then replace FORM_ID -->
+          <form action="https://formspree.io/f/FORM_ID" method="POST">
+            <label for="name">Name</label>
+            <input id="name" name="name" required />
+
+            <label for="company">Company</label>
+            <input id="company" name="company" />
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required />
+
+            <label for="message">What are you looking to secure?</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Direct contact</h3>
+          <p><strong>Email:</strong> <a href="mailto:you@domain.com">you@domain.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+19180000000">(918) 000-0000</a></p>
+          <p><strong>Service area:</strong> Tulsa / Broken Arrow / Coweta and surrounding areas</p>
+          <p class="small">Prefer a call? Send a message and we’ll schedule a 15-minute discovery.</p>
+
+          <div class="card" style="margin-top:12px; border-style:dashed;">
+            <p class="small" style="margin:0;">
+              <strong>Insurance agencies:</strong> We can help reduce phishing risk, lock down email, and produce documentation
+              useful for cyber insurance renewals and vendor requirements.
+            </p>
+          </div>
+        </div>
       </div>
+
     </div>
   </main>
 
   <footer>
     <div class="wrap">
-      © <span id="year"></span> Sacred Security Solutions • Security-first, practical consulting
+      © <span id="year"></span> SacredCyber • Security-first, practical consulting
     </div>
   </footer>
 
