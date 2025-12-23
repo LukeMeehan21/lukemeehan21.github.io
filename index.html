@@ -3,184 +3,519 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>SacredCyber | Cybersecurity Consulting • Oklahoma</title>
-  <meta name="description" content="Cybersecurity for small businesses in Oklahoma. Email hardening (MFA, SPF/DKIM/DMARC), vulnerability assessments, and ransomware readiness." />
-  <meta name="robots" content="index,follow" />
+  <meta name="description" content="SacredCyber helps small businesses reduce cyber risk with email hardening, vulnerability assessments, and ransomware readiness. Tulsa • Broken Arrow • Coweta." />
 
-  <!-- Open Graph (nice previews when you share the link) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="SacredCyber | Cybersecurity Consulting" />
-  <meta property="og:description" content="Reduce risk, stop phishing, harden email, and prevent ransomware. Tulsa • Broken Arrow • Coweta." />
+  <meta property="og:description" content="Practical security that reduces risk fast: MFA, SPF/DKIM/DMARC, vulnerability scans, and ransomware readiness." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://lukemeehan21.github.io/" />
 
   <style>
-    :root { --max: 980px; }
-    body { margin:0; font-family: system-ui, Arial, sans-serif; line-height:1.5; color:#111; background:#fff; }
-    header { padding: 56px 16px; background: #0b1b2b; color:#fff; }
-    .wrap { max-width: var(--max); margin: 0 auto; }
-    h1 { margin:0 0 10px; font-size: 40px; letter-spacing: -0.5px; }
-    p { margin: 0 0 14px; }
-    .cta { display:inline-block; margin-top: 14px; padding: 12px 16px; background:#3bb273; color:#0b1b2b; border-radius: 10px; text-decoration:none; font-weight: 800; }
-    .cta.secondary { background: transparent; color:#fff; border:1px solid rgba(255,255,255,0.35); margin-left:10px; font-weight:700; }
-    main { padding: 28px 16px; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
-    .card { border:1px solid #e7e7e7; border-radius: 14px; padding: 16px; background:#fff; }
-    .tag { display:inline-block; font-size:12px; padding: 4px 10px; border-radius: 999px; background:#eef6ff; border:1px solid #d6e9ff; }
-    footer { padding: 24px 16px; border-top:1px solid #eee; color:#555; font-size: 14px; }
-    .muted { color:#cfe3ff; }
-    .small { font-size: 14px; color:#444; }
-    a { color: inherit; }
-    ul { padding-left: 18px; margin: 10px 0 0; }
-    li { margin: 6px 0; }
+    :root{
+      --bg:#071221;
+      --panel:#0b1b2b;
+      --ink:#0d1522;
+      --text:#0f172a;
+      --muted:#5b6b84;
+      --line: rgba(15,23,42,.12);
+      --card:#ffffff;
+      --soft:#f6f8fb;
+      --brand:#29d3a1;
+      --brand2:#4aa3ff;
+      --max:1120px;
+      --r:18px;
+      --shadow: 0 12px 30px rgba(2,10,24,.08);
+    }
 
-    /* simple form styling */
-    label { display:block; font-weight:600; margin: 10px 0 6px; }
-    input, textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border:1px solid #dcdcdc;
-      border-radius: 10px;
-      font: inherit;
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcff 60%, #ffffff 100%);
+      line-height: 1.5;
     }
-    button {
-      margin-top: 12px;
-      padding: 12px 16px;
-      border: 0;
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px;}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      background: rgba(74,163,255,.10);
+      border:1px solid rgba(74,163,255,.22);
+      color:#0b3a73;
+      font-weight:700;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px; border-radius: 12px; font-weight:800;
+      border:1px solid transparent;
+      transition: transform .08s ease, opacity .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{background: var(--brand); color:#062018;}
+    .btn.secondary{background: transparent; border-color: rgba(255,255,255,.30); color:#fff;}
+    .btn.ghost{background: transparent; border-color: rgba(15,23,42,.18); color: var(--text);}
+    .btn.small{padding:10px 12px; border-radius: 10px; font-weight:800; font-size:14px;}
+
+    /* Top nav */
+    .topbar{
+      position: sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15,23,42,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 900;
+      letter-spacing: -.4px;
+    }
+    .logo{
+      width: 34px; height: 34px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, var(--brand2), var(--brand));
+      box-shadow: 0 10px 22px rgba(41,211,161,.18);
+      position: relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset: 8px;
       border-radius: 10px;
-      background:#0b1b2b;
+      border: 2px solid rgba(255,255,255,.65);
+      transform: rotate(12deg);
+    }
+    .navlinks{display:flex; gap:14px; align-items:center;}
+    .navlinks a{
+      font-weight:700; font-size:14px; color: rgba(15,23,42,.85);
+      padding:8px 10px; border-radius: 10px;
+    }
+    .navlinks a:hover{background: rgba(15,23,42,.05);}
+    .navright{display:flex; gap:10px; align-items:center;}
+    .menuBtn{display:none}
+
+    /* Hero */
+    .hero{
+      background: radial-gradient(1200px 500px at 20% -10%, rgba(74,163,255,.22), transparent 60%),
+                  radial-gradient(900px 420px at 90% 10%, rgba(41,211,161,.20), transparent 60%),
+                  linear-gradient(180deg, var(--bg), #091a2c);
       color:#fff;
-      font-weight: 800;
-      cursor: pointer;
+      padding: 64px 0 36px;
+      overflow:hidden;
+      position:relative;
     }
-    button:hover { opacity: 0.95; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .hero h1{
+      margin: 12px 0 12px;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color: rgba(255,255,255,.82);
+      max-width: 62ch;
+      font-size: 16px;
+    }
+    .heroActions{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;}
+    .heroMeta{
+      display:flex; gap:14px; flex-wrap:wrap; margin-top: 14px;
+      color: rgba(255,255,255,.72);
+      font-weight:600; font-size:14px;
+    }
+    .metaDot{opacity:.55}
+
+    /* Hero side card */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--r);
+      padding: 16px;
+    }
+    .panel h3{margin:0 0 6px; font-size: 16px}
+    .panel p{margin:0 0 12px; font-size:14px; color: rgba(255,255,255,.78)}
+    .checklist{margin:0; padding-left: 18px; color: rgba(255,255,255,.82); font-size:14px}
+    .checklist li{margin:8px 0}
+
+    /* Section scaffolding */
+    section{padding: 42px 0;}
+    .kicker{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    h2{margin: 0 0 8px; font-size: 28px; letter-spacing:-.5px;}
+    .sub{margin:0; color: var(--muted); max-width: 80ch}
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .tile{
+      grid-column: span 4;
+      min-height: 168px;
+      position: relative;
+      overflow:hidden;
+    }
+    .tile h3{margin:10px 0 6px; font-size: 16px;}
+    .tile p{margin:0; color: var(--muted); font-size: 14px;}
+    .icon{
+      width: 40px; height: 40px; border-radius: 14px;
+      background: rgba(41,211,161,.10);
+      border:1px solid rgba(41,211,161,.25);
+      display:grid; place-items:center;
+      color:#0b3a2c;
+      font-weight:900;
+    }
+    .tile:before{
+      content:"";
+      position:absolute; right:-60px; top:-60px;
+      width: 160px; height: 160px; border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(74,163,255,.18), rgba(41,211,161,.12), transparent 70%);
+      filter: blur(0px);
+    }
+    .list{margin: 10px 0 0; padding-left: 18px; color: rgba(15,23,42,.80); font-size: 14px}
+    .list li{margin:6px 0}
+
+    /* Stats band */
+    .band{
+      background: var(--soft);
+      border-top:1px solid rgba(15,23,42,.06);
+      border-bottom:1px solid rgba(15,23,42,.06);
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+    .stat{grid-column: span 3; padding: 16px; border-radius: var(--r); border:1px solid rgba(15,23,42,.08); background:#fff;}
+    .stat .n{font-size: 22px; font-weight: 950; letter-spacing:-.5px;}
+    .stat .t{color: var(--muted); font-weight:700; font-size: 13px; margin-top: 4px;}
+
+    /* Resources + CTA */
+    .resource{grid-column: span 4;}
+    .resource .tag{font-size:12px; font-weight:800; color:#0b3a73; background: rgba(74,163,255,.10); border:1px solid rgba(74,163,255,.18); padding:4px 8px; border-radius:999px; display:inline-block;}
+    .resource h3{margin: 10px 0 6px; font-size: 16px;}
+    .resource p{margin:0; color: var(--muted); font-size: 14px;}
+    .ctaBox{
+      background: linear-gradient(135deg, rgba(74,163,255,.14), rgba(41,211,161,.12));
+      border:1px solid rgba(15,23,42,.10);
+      border-radius: calc(var(--r) + 6px);
+      padding: 18px;
+    }
+
+    /* Footer */
+    footer{
+      padding: 28px 0;
+      border-top:1px solid rgba(15,23,42,.08);
+      color: rgba(15,23,42,.72);
+      font-size: 14px;
+    }
+    .footGrid{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    .footLinks{display:flex; gap:12px; flex-wrap:wrap;}
+    .footLinks a{padding: 6px 10px; border-radius: 10px;}
+    .footLinks a:hover{background: rgba(15,23,42,.05);}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns: 1fr;}
+      .tile{grid-column: span 6;}
+      .stat{grid-column: span 6;}
+      .resource{grid-column: span 6;}
+    }
+    @media (max-width: 560px){
+      .navlinks{display:none}
+      .menuBtn{display:inline-flex}
+      .tile{grid-column: span 12;}
+      .stat{grid-column: span 12;}
+      .resource{grid-column: span 12;}
+      .hero h1{font-size: 36px;}
+    }
   </style>
 </head>
 
 <body>
-  <header>
+
+  <!-- Top Nav -->
+  <div class="topbar">
     <div class="wrap">
-      <div class="tag">Cybersecurity Consulting • Oklahoma</div>
-      <h1>SacredCyber</h1>
+      <div class="nav">
+        <a class="brand" href="/">
+          <span class="logo" aria-hidden="true"></span>
+          <span>SacredCyber</span>
+        </a>
 
-      <p class="muted" style="max-width:760px;">
-        We help small businesses reduce cyber risk with practical, high-impact security: hardened email,
-        vulnerability assessments, and ransomware readiness—without enterprise overhead.
-      </p>
+        <div class="navlinks" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-      <a class="cta" href="#contact">Request a Free Risk Review</a>
-      <a class="cta secondary" href="#services">View Services</a>
+        <div class="navright">
+          <a class="btn small ghost" href="mailto:info@sacredcyber.com">Email</a>
+          <a class="btn small primary" href="#contact">Free Risk Review</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <p class="small muted" style="margin-top:12px;">
-        Email: <a href="mailto:info@sacredcyber.com">info@sacredcyber.com</a> •
-        Phone: <a href="tel:+19182772603">(918) 277-2603/a>
-      </p>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div>
+          <span class="pill">Cybersecurity Consulting • Oklahoma</span>
+          <h1>Security that reduces risk fast—without enterprise overhead.</h1>
+          <p>
+            SacredCyber hardens email, reduces exposure, and builds ransomware readiness for small businesses.
+            Clear reporting. Practical fixes. No fluff.
+          </p>
 
-      <p class="small muted" style="margin-top:4px;">
-        Tulsa • Broken Arrow • Coweta • Northeast Oklahoma
-      </p>
+          <div class="heroActions">
+            <a class="btn primary" href="#contact">Request a Free Risk Review</a>
+            <a class="btn secondary" href="#services">Explore Services</a>
+          </div>
+
+          <div class="heroMeta">
+            <span>Microsoft 365 & Google Workspace</span><span class="metaDot">•</span>
+            <span>SPF/DKIM/DMARC</span><span class="metaDot">•</span>
+            <span>Tulsa • Broken Arrow • Coweta</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>What a “Risk Review” includes</h3>
+          <p>In 20–30 minutes, we identify your top risks and the fastest fixes.</p>
+          <ul class="checklist">
+            <li>Email security check (MFA, forwarding, risky sign-ins)</li>
+            <li>Domain spoofing review (SPF/DKIM/DMARC status)</li>
+            <li>Exposure snapshot (what’s publicly visible)</li>
+            <li>Clear next-step plan + optional quote</li>
+          </ul>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn primary" href="#contact">Get started</a>
+            <a class="btn secondary" href="tel:+19182772603">Call (918) 277-2603</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
+  <!-- Services -->
+  <section id="services">
     <div class="wrap">
+      <div class="kicker">
+        <div>
+          <h2>Core services</h2>
+          <p class="sub">High-impact controls first: email hardening, exposure reduction, and ransomware readiness.</p>
+        </div>
+        <a class="btn ghost" href="#contact">Request pricing</a>
+      </div>
 
-      <h2 id="services">Core services</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">✦</div>
           <h3>Email Security Hardening</h3>
-          <p>MFA, conditional access, anti-phishing, and domain protection (SPF/DKIM/DMARC).</p>
-          <ul>
-            <li>Lock down Microsoft 365 / Google Workspace</li>
-            <li>Stop spoofing and business email compromise</li>
-            <li>Remove risky forwarding + legacy sign-in methods</li>
+          <p>Stop phishing and account takeovers by locking down identity and mail flow.</p>
+          <ul class="list">
+            <li>MFA + conditional access</li>
+            <li>Disable legacy auth + risky forwarding</li>
+            <li>SPF/DKIM/DMARC setup and enforcement</li>
           </ul>
         </div>
 
-        <div class="card">
-          <h3>Vulnerability Assessments</h3>
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">◎</div>
+          <h3>Vulnerability Assessment</h3>
           <p>Find what’s exposed and fix it in the right order.</p>
-          <ul>
-            <li>Internal + external scanning</li>
+          <ul class="list">
+            <li>Internal/external scanning</li>
             <li>Prioritized remediation plan</li>
             <li>Executive summary + technical appendix</li>
           </ul>
         </div>
 
-        <div class="card">
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">⛨</div>
           <h3>Ransomware Readiness</h3>
-          <p>Reduce downtime risk with backups, endpoint protection, and response planning.</p>
-          <ul>
-            <li>Backup and recovery validation</li>
-            <li>Endpoint hardening recommendations</li>
-            <li>Incident response checklist + playbook</li>
+          <p>Reduce downtime risk with backups, endpoints, and a response plan.</p>
+          <ul class="list">
+            <li>Backup strategy + recovery validation</li>
+            <li>Endpoint hardening guidance</li>
+            <li>Incident checklist + tabletop exercise</li>
           </ul>
         </div>
       </div>
+    </div>
+  </section>
 
-      <h2 style="margin-top:28px;">What you get</h2>
+  <!-- Credibility band -->
+  <section class="band" aria-label="Credibility">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat">
+          <div class="n">7–14 days</div>
+          <div class="t">Typical timeline for first security wins</div>
+        </div>
+        <div class="stat">
+          <div class="n">Email-first</div>
+          <div class="t">Most breaches start with inbox compromise</div>
+        </div>
+        <div class="stat">
+          <div class="n">Clear reporting</div>
+          <div class="t">Owners + IT get actionable next steps</div>
+        </div>
+        <div class="stat">
+          <div class="n">Local</div>
+          <div class="t">Northeast Oklahoma service area</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries">
+    <div class="wrap">
+      <h2>Built for the businesses attackers target</h2>
+      <p class="sub">We focus on industries that handle sensitive identity and financial data.</p>
+
       <div class="grid">
-        <div class="card">
-          <h3>Plain-English reporting</h3>
-          <p>Clear findings, impact, and “what to do next” so owners can make decisions fast.</p>
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">◆</div>
+          <h3>Insurance Agencies</h3>
+          <p>Reduce phishing risk, lock down email, and support cyber insurance renewals.</p>
         </div>
-        <div class="card">
-          <h3>Compliance-ready documentation</h3>
-          <p>Policies and summaries that support audits, insurance renewals, and vendor questionnaires.</p>
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">▦</div>
+          <h3>Construction & Contractors</h3>
+          <p>Protect invoices, bank details, and vendor communications from impersonation.</p>
         </div>
-        <div class="card">
-          <h3>Fast wins in 7–14 days</h3>
-          <p>We focus on high-impact controls first: MFA, email protections, backups, and exposure reduction.</p>
+        <div class="card tile">
+          <div class="icon" aria-hidden="true">⬡</div>
+          <h3>Small Offices</h3>
+          <p>Practical security controls without needing a full-time security hire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources">
+    <div class="wrap">
+      <div class="kicker">
+        <div>
+          <h2>Resources</h2>
+          <p class="sub">Short, useful guidance you can apply immediately.</p>
         </div>
       </div>
 
-      <h2 id="contact" style="margin-top:28px;">Contact</h2>
       <div class="grid">
-        <div class="card">
-          <h3>Request a free risk review</h3>
-          <p class="small">Tell us what you’re using (Microsoft 365/Google, number of users). We’ll reply with next steps.</p>
+        <div class="card resource">
+          <span class="tag">Checklist</span>
+          <h3>Email hardening quick wins</h3>
+          <p>Top settings that stop most account-takeover attempts.</p>
+        </div>
+        <div class="card resource">
+          <span class="tag">Guide</span>
+          <h3>Ransomware readiness basics</h3>
+          <p>Backups, recovery testing, and response steps that reduce downtime.</p>
+        </div>
+        <div class="card resource">
+          <span class="tag">Template</span>
+          <h3>Security policy starter pack</h3>
+          <p>Simple policies for passwords, MFA, device use, and incident reporting.</p>
+        </div>
+      </div>
 
-          <!-- Formspree: create a form, then replace FORM_ID -->
+      <div style="margin-top:16px;" class="ctaBox">
+        <div class="kicker">
+          <div>
+            <h2 style="margin-bottom:6px;">Want a quick risk snapshot?</h2>
+            <p class="sub" style="margin:0;">We’ll identify your top risks and the fastest fixes—no obligation.</p>
+          </div>
+          <a class="btn primary" href="#contact">Request a Free Risk Review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="sub">Email us, call, or send a short message. We’ll respond with next steps.</p>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <h3 style="margin:0 0 8px;">Request a free risk review</h3>
+          <p style="margin:0 0 12px; color: var(--muted); font-size:14px;">(Add Formspree and replace FORM_ID when ready.)</p>
+
           <form action="https://formspree.io/f/FORM_ID" method="POST">
-            <label for="name">Name</label>
-            <input id="name" name="name" required />
+            <label style="display:block; font-weight:800; margin:10px 0 6px;">Name</label>
+            <input name="name" required style="width:100%; padding:10px 12px; border:1px solid rgba(15,23,42,.16); border-radius:12px; font:inherit;" />
 
-            <label for="company">Company</label>
-            <input id="company" name="company" />
+            <label style="display:block; font-weight:800; margin:10px 0 6px;">Company</label>
+            <input name="company" style="width:100%; padding:10px 12px; border:1px solid rgba(15,23,42,.16); border-radius:12px; font:inherit;" />
 
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" required />
+            <label style="display:block; font-weight:800; margin:10px 0 6px;">Email</label>
+            <input type="email" name="email" required style="width:100%; padding:10px 12px; border:1px solid rgba(15,23,42,.16); border-radius:12px; font:inherit;" />
 
-            <label for="message">What are you looking to secure?</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
+            <label style="display:block; font-weight:800; margin:10px 0 6px;">What do you want to secure?</label>
+            <textarea name="message" rows="6" required style="width:100%; padding:10px 12px; border:1px solid rgba(15,23,42,.16); border-radius:12px; font:inherit;"></textarea>
 
-            <button type="submit">Send</button>
+            <button class="btn primary" type="submit" style="margin-top:12px;">Send</button>
           </form>
         </div>
 
-        <div class="card">
-          <h3>Direct contact</h3>
-          <p><strong>Email:</strong> <a href="mailto:you@domain.com">you@domain.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+19180000000">(918) 000-0000</a></p>
-          <p><strong>Service area:</strong> Tulsa / Broken Arrow / Coweta and surrounding areas</p>
-          <p class="small">Prefer a call? Send a message and we’ll schedule a 15-minute discovery.</p>
+        <div class="card" style="grid-column: span 5;">
+          <h3 style="margin:0 0 8px;">Direct</h3>
+          <p style="margin:0 0 10px;"><strong>Email:</strong> <a href="mailto:info@sacredcyber.com">info@sacredcyber.com</a></p>
+          <p style="margin:0 0 10px;"><strong>Phone:</strong> <a href="tel:+19182772603">(918) 277-2603</a></p>
+          <p style="margin:0;"><strong>Service area:</strong> Tulsa / Broken Arrow / Coweta</p>
 
-          <div class="card" style="margin-top:12px; border-style:dashed;">
-            <p class="small" style="margin:0;">
-              <strong>Insurance agencies:</strong> We can help reduce phishing risk, lock down email, and produce documentation
-              useful for cyber insurance renewals and vendor requirements.
+          <div class="ctaBox" style="margin-top:14px;">
+            <p style="margin:0; color: rgba(15,23,42,.82); font-weight:700;">
+              Insurance agencies: ask about email hardening + documentation for renewal questionnaires.
             </p>
+          </div>
+
+          <div style="margin-top:14px;">
+            <a class="btn ghost" href="/privacy.html">Privacy Policy</a>
           </div>
         </div>
       </div>
-
     </div>
-  </main>
+  </section>
 
+  <!-- Footer -->
   <footer>
     <div class="wrap">
-      © <span id="year"></span> SacredCyber • Security-first, practical consulting
+      <div class="footGrid">
+        <div>© <span id="year"></span> SacredCyber</div>
+        <div class="footLinks">
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#resources">Resources</a>
+          <a href="/privacy.html">Privacy</a>
+        </div>
+      </div>
     </div>
   </footer>
 
